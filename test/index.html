@@ -1,0 +1,63 @@
+<html>
+<head>
+<script src="jquery-2.1.1.js"></script>
+</head>
+<body>
+
+<h2> Client example </h2>
+<h3>Output: </h3>
+<div id="output"></div>
+
+<script>
+$(document).ready(function()
+{
+  var msg = "try to belive";
+
+  $(function readDB () 
+  {
+	$.ajax({  
+	  type:"GET",                                
+	  url: 'readAPI.php',                         
+	  data: "",                        
+	  dataType: "json",                     
+	  success: function(data)
+	  {
+		read = true;
+		console.log(data.length);
+		for (var i = 0; i < data.length;++i)
+		{
+		  for (var j = 0; j < data[i].length;++j)
+			$('#output').append((data[i][j])+"<br>"); 
+		}
+		//Set output element html
+		//recommend reading up on jquery selectors they are awesome 
+		// http://api.jquery.com/category/selectors/
+	  },
+	  error: function(data)
+	  {
+		console.log('ReadDb error');
+	  }
+	});
+  }); 
+
+  $(function writeDB () 
+  {
+	$.ajax({     
+	  url: 'writeAPI.php',  
+	  dataType:"html",  
+	  type:"POST",           
+	  data: "mex="+msg,                
+	  success: function(data)          
+	  {
+		console.log(data);
+	  } ,
+	  error: function()
+	  {
+		console.log('WriteDb error');
+	  }
+	});
+  }); 
+});
+</script>
+</body>
+</html>
