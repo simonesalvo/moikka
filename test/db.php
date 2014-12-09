@@ -5,7 +5,7 @@
   //--------------------------------------------------------------------------
   $host = "db4free.net";
   $user = "ssimxp";
-  $pass = "apocalipto";
+  $pass = "**********"; // edited
 
   $dbname = "simtest01";
   $tablename = "moikka";
